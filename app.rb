@@ -12,6 +12,11 @@ class App < Sinatra::Base
     'Healthy'
   end
 
+  post '/user-signup/record-last-login' do
+    thing = WifiUser::UseCase::RecordLastLogin.new(user_gateway: WifiUser::Gateway::Users.new)
+    thing.execute(username: params[:username], datetime: params[:datetime])
+  end
+
   post '/user-signup/email-notification' do
     WifiUser::UseCase::SnsNotificationHandler.new(logger).handle(request)
   end
