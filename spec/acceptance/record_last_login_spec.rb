@@ -4,7 +4,7 @@ xdescribe 'record last login' do
   # Noticed teardown in other tests - might need it here?
   let(:users) { WifiUser::Repository::User.new }
   let(:username) { 1 }
-  let(:yesterday) { DateTime.now - 24 * 60 * 60 }
+  let(:yesterday) { DateTime.now - 1 }
   let(:today) { Datetime.now }
 
   context 'on first login' do
